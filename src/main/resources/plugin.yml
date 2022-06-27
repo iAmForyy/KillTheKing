@@ -1,0 +1,11 @@
+name: KillTheKing
+version: '${project.version}'
+main: com.iamforyydev.killtheking.KillTheKing
+authors: [ iAmForyyDev_ ]
+description: Minigame based on killing the chosen king
+
+commands:
+  killtheking:
+    description: command from killtheking.
+    aliases:
+      - ktk
