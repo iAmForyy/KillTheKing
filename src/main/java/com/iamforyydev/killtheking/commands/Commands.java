@@ -2,7 +2,9 @@ package com.iamforyydev.killtheking.commands;
 
 import com.iamforyydev.killtheking.KillTheKing;
 import com.iamforyydev.killtheking.game.Game;
+import com.iamforyydev.killtheking.utils.Utils;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.command.Command;
@@ -25,22 +27,22 @@ public class Commands implements CommandExecutor {
         Player player = (Player) sender;
 
         if(args.length == 0){
-            player.sendMessage(c("&cWrong command, use /ktk help"));
+            player.sendMessage(ChatColor.RED+"&cWrong command, use /ktk help");
             return true;
         }
 
         switch (args[0].toLowerCase()){
             default:
-                player.sendMessage(c("&cWrong command, use /ktk help"));
+                player.sendMessage(ChatColor.RED+"Wrong command, use /ktk help");
                 break;
             case "start":
                 if(!player.hasPermission("killtheking.start")){
-                    player.sendMessage(c("&cYou do not have permission to execute this command!"));
+                    player.sendMessage(ChatColor.RED+"You do not have permission to execute this command!");
                     return true;
                 }
 
                 if(plugin.getGame().isEnabled()){
-                    player.sendMessage(c("&cThe game is already started!"));
+                    player.sendMessage(ChatColor.RED+"The game is already started!");
                     return true;
                 }
 
@@ -65,7 +67,7 @@ public class Commands implements CommandExecutor {
                         "",
                         "&fKing: &6<king> &8| &fLocation: &ex: &6<x> &ey: &6<y> &ez: &6<z>",
                         "&e¡Good luck in your adventure!",
-                        "").forEach(s -> sendBroadcast(s
+                        "").forEach(s -> Utils.sendBroadcast(s
                         .replace("<king>", king.getName())
                         .replace("<x>", Integer.toString(x))
                         .replace("<y>", Integer.toString(y))
@@ -81,7 +83,7 @@ public class Commands implements CommandExecutor {
                         "&fuse &e'/ktk help' &fto see the help menu",
                         "",
                         "&ePlugin development by iAmForyyDev_",
-                        "").forEach(s -> player.sendMessage(c(s)));
+                        "").forEach(s -> player.sendMessage(Utils.toLegacyColor(s)));
                 break;
         }
         return true;

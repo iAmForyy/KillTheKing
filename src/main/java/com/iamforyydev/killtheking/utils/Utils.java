@@ -6,12 +6,12 @@ import org.bukkit.Sound;
 
 public class Utils {
 
-    public static String c(String message){
+    public static String toLegacyColor(String message){
         return ChatColor.translateAlternateColorCodes('&', message);
     }
 
     public static void sendBroadcast(String message){
-        Bukkit.getOnlinePlayers().forEach(player -> player.sendMessage(c(message)));
+        Bukkit.getOnlinePlayers().forEach(player -> player.sendMessage(toLegacyColor(message)));
     }
 
     public static void sendSound(Sound sound, int volume, int pitch){

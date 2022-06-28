@@ -2,6 +2,7 @@ package com.iamforyydev.killtheking.listener;
 
 import com.iamforyydev.killtheking.KillTheKing;
 import com.iamforyydev.killtheking.game.Game;
+import com.iamforyydev.killtheking.utils.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -11,7 +12,6 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 
 import java.util.Arrays;
 
-import static com.iamforyydev.killtheking.utils.Utils.c;
 import static com.iamforyydev.killtheking.utils.Utils.sendSound;
 
 public class GameListener implements Listener {
@@ -36,7 +36,7 @@ public class GameListener implements Listener {
 
         king.spigot().respawn();
 
-        killer.sendMessage(c("&eThe player &6"+killer.getName()+" &ehas won the game!"));
+        killer.sendMessage(Utils.toLegacyColor("&eThe player &6"+killer.getName()+" &ehas won the game!"));
         sendSound(Sound.ENDERDRAGON_DEATH, 1, 1);
 
         Arrays.asList(
